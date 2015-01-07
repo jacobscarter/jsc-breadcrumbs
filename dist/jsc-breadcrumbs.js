@@ -1,6 +1,6 @@
 /**
- * Easy to use Breadcrumbs for AngularJS
- * @version v0.0.1 - 2015-01-07 * @link https://github.com/jacobscarter/angular-breadcrumbs
+ * Easy to use breadcrumbs for AngularJS
+ * @version v1.0.1 - 2015-01-07 * @link https://github.com/jacobscarter/jsc-breadcrumbs
  * @author Jacob Carter <jacob@ieksolutions.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -149,6 +149,15 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
 
     }
 ]);
+angular.module('templates-jscBreadcrumbs', ['template.html']);
+
+angular.module("template.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("template.html",
+    "<div class=\"back-button\" ng-hide=\"hide\" ng-click=\"backButton()\">\n" +
+    "	<a>BACK</a>\n" +
+    "</div>");
+}]);
+
 jscBreadcrumbs.factory('JSCBreadcrumbs', ['$rootScope', '$state', '$log', '$timeout',
 	function ($rootScope, $state, $log, $timeout) {
 
