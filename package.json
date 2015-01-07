@@ -1,10 +1,10 @@
 {
-  "name": "angular-breadcrumbs",
-  "description": "Easy to use Breadcrumbs for AngularJS",
-  "version": "0.0.1",
-  "filename": "jscBreadcrumbs.min.js",
-  "main": "./dist/jscBreadcrumbs.min.js",
-  "homepage": "https://github.com/jacobscarter/angular-breadcrumbs",
+  "name": "jsc-breadcrumbs",
+  "description": "Easy to use breadcrumbs for AngularJS",
+  "version": "1.0.1",
+  "filename": "jsc-breadcrumbs.min.js",
+  "main": "./dist/jsc-breadcrumbs.min.js",
+  "homepage": "https://github.com/jacobscarter/jsc-breadcrumbs",
   "author": "Jacob Carter <jacob@ieksolutions.com>",
   "repository": {
     "type": "git",

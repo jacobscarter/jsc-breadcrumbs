@@ -1,0 +1,18 @@
+{
+  "name": "jsc-breadcrumbs",
+  "version": "1.0.1",
+  "main": "./dist/angular-breadcrumbs.js",
+  "description": "Easy to use breadcrumbs for AngularJS",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jacobscarter/jsc-breadcrumbs.git"
+  },
+  "dependencies": {
+    "angular": "*",
+    "ui-router": "*"
+  },
+  "ignore": [
+    "node_modules",
+    "src/lib"
+  ]
+}
