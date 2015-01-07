@@ -11,6 +11,10 @@ This will give you access to jscBreadcrumbs and all of it's dependencies.
 
 ##Use
 
+Include script files:
+
+`<script src="lib/jsc-breadcrumbs/jsc-breadcrumbs.min.js"></script>`
+
 To use jscBreadcrumbs, first include it in your module:
 
 `angular.module('myApp', ['jscBreadcrumbs']);`
