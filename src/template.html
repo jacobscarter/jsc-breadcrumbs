@@ -1,3 +1,10 @@
-<div class="back-button" ng-hide="hide" ng-click="backButton()">
-	<a>BACK</a>
+<div class="jscbreadcrumbs">
+	<div class="back-button" ng-hide="hide" ng-click="backButton()" ng-if="backButtonShow">
+		<a>BACK</a>
+	</div>
+	<div class="breadcrumb-trail" ng-if="breadcrumbTrailShow" ng-hide="hide">
+		<ul>
+			<li ng-repeat="item in trailArray" ng-click="breadcrumbClick($index)">{{item.name}} /</li>
+		</ul>
+	</div>
 </div>

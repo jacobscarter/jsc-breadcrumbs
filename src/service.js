@@ -4,7 +4,6 @@ jscBreadcrumbs.factory('JSCBreadcrumbs', ['$rootScope', '$state', '$log', '$time
 
 
 	//breadcrumbs
-	
 	var breadcrumbsArray = [];
 	var breadcrumbData = {};
 	breadcrumbData.hide = false;

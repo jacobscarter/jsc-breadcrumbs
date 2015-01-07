@@ -31,47 +31,12 @@ module.exports = function(grunt) {
         dest: '<%= dirs.dest %>/<%= pkg.name %>.js'
       }
     },
-    // recess: {
-    //   build: {
-    //     src: [ 'src/angular-wizard.less' ],
-    //     dest: '<%= dirs.dest %>/<%= pkg.name %>.css',
-    //     options: {
-    //       compile: true,
-    //       compress: false,
-    //       noUnderscores: false,
-    //       noIDs: false,
-    //       zeroUnits: false
-    //     }
-    //   },
-      // compile: {
-      //   src: [ 'src/angular-wizard.less' ],
-      //   dest: '<%= dirs.dest %>/<%= pkg.name %>.min.css',
-      //   options: {
-      //     compile: true,
-      //     compress: true,
-      //     noUnderscores: false,
-      //     noIDs: false,
-      //     zeroUnits: false
-      //   }
-      // }
-    // },
-    // copy: {
-    //   less_files: {
-    //     files: [
-    //       { 
-    //         src: [ 'src/angular-wizard.less' ],
-    //         dest: '<%= dirs.dest %>',
-    //         cwd: '.',
-    //         expand: true,
-    //         flatten: true
-    //       }
-    //    ]   
-    //   }
-    // },
-    // bowerInstall: {
-    //     install: {
-    //     }
-    // },
+    copy: {
+      css: {
+        src: 'src/jscbreadcrumbs.css',
+        dest: 'dist/jscbreadcrumbs.css',
+      },
+    },
     html2js: {
       jscBreadcrumbs: {
         options: {
@@ -90,23 +55,6 @@ module.exports = function(grunt) {
         dest: '<%= dirs.dest %>/<%= pkg.name %>.min.js'
       }
     },
-    // karma: {
-    //   options: {
-    //     configFile: 'karma.conf.js'
-    //   },
-    //   build: {
-    //     singleRun: true,
-    //     autoWatch: false
-    //   },
-    //   travis: {
-    //     singleRun: true,
-    //     autoWatch: false,
-    //     browsers: ['Firefox']
-    //   },
-    //   dev: {
-    //     autoWatch: true
-    //   }
-    // },
     changelog: {
       options: {
         dest: 'CHANGELOG.md'
@@ -119,36 +67,19 @@ module.exports = function(grunt) {
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
-
-  //grunt.loadNpmTasks('grunt-bower-task');
-
-  //grunt.renameTask("bower", "bowerInstall");
-
-  // grunt.loadNpmTasks('grunt-karma');
-  // grunt.loadNpmTasks('grunt-karma');
-
   grunt.loadNpmTasks('grunt-conventional-changelog');
-
-  //grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  //grunt.loadNpmTasks('grunt-contrib-copy');
-  //grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
-
-
+  grunt.loadNpmTasks('grunt-contrib-copy');
   // Default task.
   grunt.registerTask('default', ['build']);
-
   // Build task.
   grunt.registerTask('build', [
     'clean',
-    //'bowerInstall', 
-    //'copy',
-    //'recess',
     'html2js',
     'concat', 
-    'uglify'
-    //'karma:build'
+    'uglify',
+    'copy:css'
     ]);
 
 
