@@ -5,19 +5,22 @@ jscBreadcrumbs.factory('JSCBreadcrumbs', ['$rootScope', '$state', '$log', '$time
 
 	//breadcrumbs
 	
-	var breadcrumbs = [];
+	var breadcrumbsArray = [];
 	var breadcrumbData = {};
 	breadcrumbData.hide = false;
 	
 
 	var breadcrumbsPop = function(){
-		breadcrumbs = JSON.parse(sessionStorage.getItem('jscBreadcrumbs'));
-		console.log('breadcrumb being popped off in Menu: ', breadcrumbs);
-		breadcrumbs.pop();
-		console.log('breadcrumb AFTER being popped off in Menu: ', breadcrumbs);
-		sessionStorage.setItem('jscBreadcrumbs', JSON.stringify(breadcrumbs));
+		breadcrumbsArray = JSON.parse(sessionStorage.getItem('jscBreadcrumbs'));
+		breadcrumbsArray.pop();
+		sessionStorage.setItem('jscBreadcrumbs', JSON.stringify(breadcrumbsArray));
 		//return breadcrumbs;
 	};
+
+	var breadcrumbs = function(){
+		breadcrumbsArray = JSON.parse(sessionStorage.getItem('jscBreadcrumbs'));
+		return breadcrumbsArray;
+	}
 
 
 	return {

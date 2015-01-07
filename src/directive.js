@@ -1,4 +1,4 @@
-jscBreadcrumbs.directive('breadcrumbs', ['$rootScope', '$log', '$state', '$stateParams', 'JSCBreadcrumbs',
+jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$stateParams', 'JSCBreadcrumbs',
     function ($rootScope, $log, $state, $stateParams, JSCBreadcrumbs) {
 
         return {
@@ -29,25 +29,19 @@ jscBreadcrumbs.directive('breadcrumbs', ['$rootScope', '$log', '$state', '$state
                     JSCBreadcrumbs.breadcrumbData.hide = true;
                 }
 
-                $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
-
-                console.warn('breadcrumb hide value before statechangestart! ', $scope.hide);
-                
+                $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;                
                 
                 $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 
                     if(sessionStorage.getItem('jscBreadcrumbs') && angular.isArray(JSON.parse(sessionStorage.getItem('jscBreadcrumbs')))){
                         breadcrumbs = JSON.parse(sessionStorage.getItem('jscBreadcrumbs'));
-                        console.warn('entered if statement to reset breadcrumbs based off what is stored in sessionStorage: ', breadcrumbs);
                     }
 
-                    $log.warn('breadcrumbs directive statechange arguments ', toState, toParams, fromState, fromParams);
 
                     //resetting breadcrumb if fromState matches reset state
                     for(var i in resetArray){
                         if(fromState.name === resetArray[i]){
                             breadcrumbs.length = 0;
-                            console.warn('this is a reset state, we are resetting breadcrumbs! ', breadcrumbs);
                         }
                     }
 
@@ -56,11 +50,9 @@ jscBreadcrumbs.directive('breadcrumbs', ['$rootScope', '$log', '$state', '$state
                     if(toParams.breadcrumbs && toParams.breadcrumbs.doNotShow === true){
                         JSCBreadcrumbs.breadcrumbData.hide = true;
                         $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
-                        $log.warn('entered doNotShow if statement', $scope.hide);
                     } else {
                         JSCBreadcrumbs.breadcrumbData.hide = false;
                         $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
-                        $log.warn('did not enter doNotShow if statement, should be false', $scope.hide);
                     }
 
                     //I have seperated the below into several if statements so the truthy checks aren't
@@ -68,8 +60,6 @@ jscBreadcrumbs.directive('breadcrumbs', ['$rootScope', '$log', '$state', '$state
 
                     //check to stop duplicate adding of states for multiple loading of directive
                     //this is why I hate digest cycle sometimes...
-                    console.warn('about to push to breadcrumbs array if both args are true: ', fromState.name.length > 0);
-                    //if(firstLoop && fromState.name.length > 0){
                     if(fromState.name.length > 0){
                         breadcrumbs.push({
                             state : fromState,
@@ -83,30 +73,19 @@ jscBreadcrumbs.directive('breadcrumbs', ['$rootScope', '$log', '$state', '$state
                     //check stateParam to see if state should not be stored
                     //this is one of the last steps done!
                     if(fromParams.breadcrumbs && fromParams.breadcrumbs.doNotStore){
-                        $log.log('removing breadcrumb that should not be stored - BEFORE REMOVAL: ', angular.copy(breadcrumbs));
                         $scope.breadcrumbPop();
                     }
 
                     
                 
-
-                    //using sessionStorage so breadcrumbs are cleared if user exits page, let me know if
-                    //you would rather have localStorage, but I think sessionStorage makes more sense.
                     sessionStorage.setItem('jscBreadcrumbs', JSON.stringify(breadcrumbs));
-                    //$log.log('sessionStorage: ', JSON.stringify(breadcrumbs));
-                    //$log.log('getItem sessionStorage: ', JSON.parse(sessionStorage.getItem('jscBreadcrumbs')));
 
 
                     //if breadcrumbs array is empty we wont show breadcrumbs
-                if(breadcrumbs.length === 0){
-                    console.warn('breadcrumbs length is 0 so hiding');
-                    JSCBreadcrumbs.breadcrumbData.hide = true;
-                    $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
-                }
-
-
-
-                   
+                    if(breadcrumbs.length === 0){
+                        JSCBreadcrumbs.breadcrumbData.hide = true;
+                        $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
+                    }
 
                     
 
@@ -133,12 +112,8 @@ jscBreadcrumbs.directive('breadcrumbs', ['$rootScope', '$log', '$state', '$state
                 $scope.backButton = function(){
                     updateBreadCrumbs();
                     var breadcrumbObject = breadcrumbs[breadcrumbs.length - 1];
-                    $log.log('breadcrumbObject ', breadcrumbObject.state.name, breadcrumbObject.params);
-                    //$log.log('breadcrumbs object : ', breadcrumbObject);
                     $state.go(breadcrumbObject.state.name, breadcrumbObject.params);
-                    //var backButtonState = {}
                     breadcrumbs.splice(breadcrumbs.length -2, 2);
-                    $log.log('NEW breadcrumbs array : ', breadcrumbs);
                     sessionStorage.setItem('jscBreadcrumbs', JSON.stringify(breadcrumbs));
                     if(breadcrumbs.length === 0){
                         JSCBreadcrumbs.breadcrumbData.hide = true;
