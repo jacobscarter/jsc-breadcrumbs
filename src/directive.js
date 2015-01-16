@@ -100,7 +100,7 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
                     //if breadcrumbs array is empty we wont show breadcrumbs
                     if(breadcrumbs.length === 0){
                         JSCBreadcrumbs.breadcrumbData.hide = true;
-                        $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
+                        $scope.hide = true;
                     }
 
                     
