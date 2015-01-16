@@ -1,6 +1,6 @@
 /**
  * Easy to use breadcrumbs for AngularJS
- * @version v1.1.0 - 2015-01-07 * @link https://github.com/jacobscarter/jsc-breadcrumbs
+ * @version v1.1.0 - 2015-01-16 * @link https://github.com/jacobscarter/jsc-breadcrumbs
  * @author Jacob Carter <jacob@ieksolutions.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -63,7 +63,7 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
 
 
                     //hide breadcrumbs logic
-                    if(toState.data.breadcrumbs && toState.data.breadcrumbs.doNotShow === true){
+                    if(toState.data && toState.data.breadcrumbs && toState.data.breadcrumbs.doNotShow === true){
                         JSCBreadcrumbs.breadcrumbData.hide = true;
                         $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
                     } else {
