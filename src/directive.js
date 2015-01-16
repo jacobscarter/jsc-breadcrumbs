@@ -55,7 +55,7 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
 
 
                     //hide breadcrumbs logic
-                    if(toState.data.breadcrumbs && toState.data.breadcrumbs.doNotShow === true){
+                    if(toState.data && toState.data.breadcrumbs && toState.data.breadcrumbs.doNotShow === true){
                         JSCBreadcrumbs.breadcrumbData.hide = true;
                         $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
                     } else {
