@@ -1,6 +1,6 @@
 /**
  * Easy to use breadcrumbs for AngularJS
- * @version v1.1.0 - 2015-01-16 * @link https://github.com/jacobscarter/jsc-breadcrumbs
+ * @version v1.1.1 - 2015-01-16 * @link https://github.com/jacobscarter/jsc-breadcrumbs
  * @author Jacob Carter <jacob@ieksolutions.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
@@ -42,9 +42,7 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
                     breadcrumbs = JSON.parse(sessionStorage.getItem('jscBreadcrumbs'));
                 } else {
                     breadcrumbs = [];
-                }
-                
-                $log.log('breadcrumbs and beginning of cycle: ', angular.copy(breadcrumbs));
+                }                
 
                 
                 //if the state has a hide param we wont show breadcrumbs
@@ -52,9 +50,7 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
                     JSCBreadcrumbs.breadcrumbData.hide = true;
                 }
 
-                $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
-                
-                $log.log('scope.hide value: ', angular.copy($scope.hide));
+                $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;                
                 
                 $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 
@@ -63,7 +59,7 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
                     }
 
 
-                    $log.log('breadcrumbs on statechagestart ', angular.copy(breadcrumbs));
+                    
 
 
                     //hide breadcrumbs logic
@@ -74,8 +70,6 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
                         JSCBreadcrumbs.breadcrumbData.hide = false;
                         $scope.hide = JSCBreadcrumbs.breadcrumbData.hide;
                     }
-                    
-                    $log.log('scope.hide on statechangestart: ', angular.copy($scope.hide));
 
 
                     //check to stop duplicate adding of states for multiple loading of directive
@@ -116,8 +110,6 @@ jscBreadcrumbs.directive('jscBreadcrumbs', ['$rootScope', '$log', '$state', '$st
                         JSCBreadcrumbs.breadcrumbData.hide = true;
                         $scope.hide = true;
                     }
-                    
-                    $log.log('hide at end of statechangestart ', angular.copy($scope.hide));
 
                     
 
