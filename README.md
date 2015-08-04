@@ -43,7 +43,7 @@ There is a JSCBreadcrumbs Service that makes some methods available to you.  To 
 
 Currently these methods include: 
  * `JSCBreadcrumbs.breadcrumbs()` -> returns breadcrumbs array
- * `JSCBreadcumbs.breadcrumbsPop()` -> removes the last item on the breadcrumb array
+ * `JSCBreadcrumbs.breadcrumbsPop()` -> removes the last item on the breadcrumb array
 
 You can also add params to each state that will affect the breadcrumbs behavior.  Below is an example:
 
