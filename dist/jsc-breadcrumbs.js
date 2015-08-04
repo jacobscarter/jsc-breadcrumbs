@@ -1,6 +1,6 @@
 /**
  * Easy to use breadcrumbs for AngularJS
- * @version v1.1.1 - 2015-01-16 * @link https://github.com/jacobscarter/jsc-breadcrumbs
+ * @version v1.1.3 - 2015-08-04 * @link https://github.com/jacobscarter/jsc-breadcrumbs
  * @author Jacob Carter <jacob@ieksolutions.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
