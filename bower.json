@@ -1,6 +1,6 @@
 {
   "name": "jsc-breadcrumbs",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "main": "./dist/angular-breadcrumbs.js",
   "description": "Easy to use breadcrumbs for AngularJS",
   "repository": {
